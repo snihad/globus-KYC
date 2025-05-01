@@ -14,17 +14,13 @@ body {
   height:100vh;     /* basta 100vh, non 201vh: evita scroll */
 }
 .animation {
-	--size: 400px;
-	position: absolute;
-	top: 25vh;
-	right: 50vw;
-	font-size: calc(var(--size)/100);
-	width: var(--size);
-	height: var(--size);
-	isolation: isolate;
-	opacity:0;
-	transition: opacity 2.4s;
-	pointer-events: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
+	opacity: 1;
 }
 .animation .earth {
 	position: absolute;
