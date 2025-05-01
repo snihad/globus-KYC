@@ -7,31 +7,25 @@
 <!-- 		<script src="three.min.js" defer></script>
  -->
 		<style>
-body {
-  background: transparent;
-  margin:0;
-  height:100vh;
-}
-.animation {
-	--size: 400px;
-	position: absolute;
-	top: 25vh;
-	right: 50vw;
-	font-size: calc(var(--size)/100);
-	width: var(--size);
-	height: var(--size);
-	isolation: isolate;
-	opacity:0;
-	transition: opacity 2.4s;
-	pointer-events: none;
-}
-.animation .earth {
-	position: absolute;
-	top: -15%;
-	left:-15%;
-	width: 130%;
-	height:130%;
-}
+  body {
+    background: linear-gradient(138deg,#222 0%,#000 100%);
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .animation {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
+  .animation .earth {
+    width: 600px;
+    height: 600px;
+  }
 .halo, .edge {
 	width: 100em;
 	height: 100em;
