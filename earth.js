@@ -53,7 +53,6 @@ Raycaster } from "./three.min.js"
 	planet.rotateY(PI/5).rotateZ(obliquity)//.updateMatrixWorld();
 	var pAxis=vec3(0,1,0).applyQuaternion(planet.quaternion);
 
-	scene2.background=rTargets[0].texture;
 	
 	var bloom=new Mesh(0, new RawShaderMaterial({
 		uniforms:{
