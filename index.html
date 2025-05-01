@@ -1,34 +1,77 @@
-<div id="globe-container" style="width:400px;height:400px;position:relative;"></div>
-<script type="module">
-  import * as THREE from "https://cdn.skypack.dev/three@0.150.1";
-
-  const container = document.getElementById("globe-container");
-  const width = container.offsetWidth;
-  const height = container.offsetHeight;
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-  camera.position.z = 400;
-
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-  renderer.setSize(width, height);
-  renderer.setClearColor(0x000000, 0); // <--- Trasparente
-  container.appendChild(renderer.domElement);
-
-  const sphereGeometry = new THREE.SphereGeometry(150, 64, 64);
-  const sphereMaterial = new THREE.MeshBasicMaterial({
-    color: 0x0084ff,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.6,
-  });
-  const globe = new THREE.Mesh(sphereGeometry, sphereMaterial);
-  scene.add(globe);
-
-  function animate() {
-    requestAnimationFrame(animate);
-    globe.rotation.y += 0.001;
-    renderer.render(scene, camera);
-  }
-  animate();
-</script>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>globus - KYC</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+<!-- 		<script src="three.min.js" defer></script>
+ -->
+		<style>
+body {
+  /* usa il tuo gradiente oppure un semplice colore */
+  background: linear-gradient(138deg,#222 0%,#000 100%);
+  margin:0;
+  height:100vh;     /* basta 100vh, non 201vh: evita scroll */
+}
+.animation {
+	--size: 400px;
+	position: absolute;
+	top: 25vh;
+	right: 50vw;
+	font-size: calc(var(--size)/100);
+	width: var(--size);
+	height: var(--size);
+	isolation: isolate;
+	opacity:0;
+	transition: opacity 2.4s;
+	pointer-events: none;
+}
+.animation .earth {
+	position: absolute;
+	top: -15%;
+	left:-15%;
+	width: 130%;
+	height:130%;
+}
+.halo, .edge {
+	width: 100em;
+	height: 100em;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transform: rotate(-52deg);
+	border-radius: 50%;
+	box-shadow: #1e85db52 -0.8em 0 5.8em -1.5em inset;
+	pointer-events: all;
+}
+.halo {
+	font-size: 106%;
+	margin: -3em;
+	box-shadow: #2172ffe0 -2.2em 0 3.1em -0.5em inset, #001426d9 -2.9em 0 3.8em -0.9em inset, #0084ff30 -59em 0 18em -41em inset;
+	mix-blend-mode: color-dodge;
+	color: #5291ff9e;
+	filter: drop-shadow(0.4em 0 4.6em) blur(0.25em);
+	touch-action: none;
+}
+.halo::before, .halo::after{
+	content: '';
+	display: block;
+	height: 100%;
+	border-radius: 50%;
+	box-shadow: #309bff -1.3em 0 0.9em -0.8em inset;
+	mix-blend-mode: color-dodge;
+}
+.halo::after{
+	margin-top: -100%;
+}
+</style>
+	</head>
+	<body id="color">
+		<div class="animation">
+			<div class="edge"></div>
+			<canvas id="earth" class="earth"></canvas>
+			<div class="halo"></div>
+		</div>
+ 		<script src="earth.js" type="module"></script>
+	</body>
+</html>
