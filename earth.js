@@ -41,6 +41,7 @@ Raycaster } from "./three.min.js"
 	 canvas=document.querySelector(canvasId), container=document.querySelector('.animation'); 
 
 	var renderer = new WebGLRenderer({alpha:true, antialias:true, canvas: canvas});//
+	renderer.setClearColor(0x1a1a1a, 1);
 	var rTargets=[new WebGLRenderTarget(W,H,{depthBuffer:false, stencilBuffer:false})];
 	rTargets[1]=rTargets[0].clone();
 
